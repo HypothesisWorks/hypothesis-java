@@ -22,7 +22,8 @@ Things that are currently unimplemented:
 2. The example mutator and shrinker are significantly less sophisticated than the Python one. There's no technical
    reason for this to be case, they're just based on an earlier prototype of the concept that works well enough for a
    tech demo.
-3. Most of the  ta generationlibrary. This is in many ways where the bulk of the work in porting an implementation lies.
+3. Most of the data generation library. This is in many ways where the bulk of the work in porting an implementation
+   lies.
 4. Decent example printing. Right now it just uses toString, which is not-ideal. Additionally it's not obvious what
    the best way to hook in to it.
 5. A license that you would want to use it under.
