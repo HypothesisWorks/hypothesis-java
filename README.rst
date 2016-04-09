@@ -24,8 +24,8 @@ Things that are currently unimplemented:
    tech demo.
 3. Most of the data generation library. This is in many ways where the bulk of the work in porting an implementation
    lies.
-4. Decent example printing. Right now it just uses toString, which is not-ideal. Additionally it's not obvious what
-   the best way to hook in to it.
+4. Decent example printing. Right now it just uses toString, which is not ideal. Additionally it's not obvious what
+   the best way to hook printing into JUnit is.
 5. A license that you would want to use it under.
 
 Licensing
