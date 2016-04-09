@@ -160,9 +160,13 @@ public class TestData implements Comparable<TestData> {
 			freeze();
 			throw new StopTest();
 		}
-		final byte[] result = Arrays.copyOfRange(buffer, index - n, index);
+		final byte[] result = doDrawBytes(n);
 		stopExample();
 		return result;
+	}
+
+	private byte[] doDrawBytes(int n) {
+		return (byte[]) Arrays.copyOfRange(buffer, index - n, index);
 	}
 
 	public void freeze() {
@@ -207,10 +211,6 @@ public class TestData implements Comparable<TestData> {
 			status = Status.INVALID;
 		}
 		throw new StopTest();
-	}
-
-	boolean rejected() {
-		return status == Status.INVALID || status == Status.OVERRUN;
 	}
 
 	public void startExample() {
