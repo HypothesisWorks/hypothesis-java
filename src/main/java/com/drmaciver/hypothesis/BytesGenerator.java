@@ -1,7 +1,7 @@
 package com.drmaciver.hypothesis;
 
 public class BytesGenerator implements DataGenerator<byte[]> {
-	final int n;
+	private final int n;
 
 	public BytesGenerator(int n) {
 		super();

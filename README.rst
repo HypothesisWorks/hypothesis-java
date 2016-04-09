@@ -12,5 +12,5 @@ more flexibility for future plans. The most likely future licensing path is that
 be a core version available under the MPLv2 with a proprietary extension library containing
 most of the strategies and some useful extensions.
 
-If you are interested in a fully fledge Hypothesis for Java, please
+If you are interested in a fully fledged Hypothesis for Java, please
 `contact me<mailto:david@drmaciver.com>`_ to discuss rates for developing it.

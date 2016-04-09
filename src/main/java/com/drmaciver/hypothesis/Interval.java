@@ -35,9 +35,7 @@ class Interval implements Comparable<Interval> {
         if (getClass() != obj.getClass())
             return false;
         final Interval other = (Interval) obj;
-        if (end != other.end)
-            return false;
-        return start == other.start;
+        return end == other.end && start == other.start;
     }
 
     @Override

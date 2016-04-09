@@ -7,8 +7,8 @@ import java.util.Random;
 
 class TestRunner {
 	final Random random;
-	HypothesisTestFunction _testFunction;
-	HypothesisSettings settings;
+	final HypothesisTestFunction _testFunction;
+	final HypothesisSettings settings;
 	int changed = 0;
 	int shrinks = 0;
 	int validExamples = 0;
@@ -184,10 +184,7 @@ class TestRunner {
 		if (data.getStatus() == Status.OVERRUN) {
 			return data.index() <= lastData.index();
 		}
-		if (data.getStatus() == Status.INTERESTING) {
-			return lastData.compareTo(data) > 0;
-		}
-		return true;
+		return data.getStatus() != Status.INTERESTING || lastData.compareTo(data) > 0;
 	}
 
 	boolean incorporateNewBuffer(byte[] buffer) {
@@ -292,7 +289,7 @@ class TestRunner {
 	void run() {
 		try {
 			_run();
-		} catch (final StopShrinking e) {
+		} catch (final StopShrinking ignored) {
 
 		}
 	}
@@ -300,7 +297,7 @@ class TestRunner {
 	private void testFunction(TestData data) {
 		try {
 			_testFunction.runTest(data);
-		} catch (final StopTest st) {
+		} catch (final StopTest ignored) {
 		}
 		data.freeze();
 		if (data.status.compareTo(Status.VALID) >= 0)

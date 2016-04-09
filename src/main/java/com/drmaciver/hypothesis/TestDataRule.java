@@ -51,7 +51,7 @@ public class TestDataRule extends Object implements TestRule {
 				}, settings);
 				runner.run();
 				if (runner.lastData.getStatus() == Status.INTERESTING) {
-					logger = logger = Logger
+					logger = Logger
 							.getLogger(description.getTestClass().getName() + '.' + description.getDisplayName());
 					index = 0;
 					assert lastError != null;

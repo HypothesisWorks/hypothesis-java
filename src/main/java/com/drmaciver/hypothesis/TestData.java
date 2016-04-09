@@ -9,12 +9,12 @@ import java.util.List;
  * Created by david on 4/9/16.
  */
 public abstract class TestData implements Comparable<TestData> {
+    final List<Integer> intervalStarts = new ArrayList<Integer>();
+    final List<Interval> intervals = new ArrayList<Interval>();
     byte[] record;
     boolean frozen = false;
     int index = 0;
     Status status = Status.VALID;
-    List<Integer> intervalStarts = new ArrayList<Integer>();
-    List<Interval> intervals = new ArrayList<Interval>();
     int checksum = -1;
 
     public TestData(int maxSize, byte[] buffer) {

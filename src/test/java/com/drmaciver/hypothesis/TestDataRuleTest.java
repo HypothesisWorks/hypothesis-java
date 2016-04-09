@@ -2,11 +2,9 @@ package com.drmaciver.hypothesis;
 
 import org.junit.Assert;
 import org.junit.Rule;
+import org.junit.Test;
 
 import java.util.List;
-
-import org.junit.Test;
-import org.junit.matchers.JUnitMatchers;
 
 public class TestDataRuleTest {
   private static final DataGenerator<Integer> INTEGER = new IntegerGenerator();

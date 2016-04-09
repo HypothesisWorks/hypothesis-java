@@ -1,6 +1,6 @@
 package com.drmaciver.hypothesis;
 
-public class ByteUtils {
+class ByteUtils {
 	static byte[] deleteInterval(byte[] x, int start, int end) {
 		final byte[] result = new byte[x.length - (end - start)];
 		System.arraycopy(x, 0, result, 0, start);
