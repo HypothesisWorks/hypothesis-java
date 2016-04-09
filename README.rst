@@ -43,5 +43,5 @@ I'm not very interested in supporting another fully fledged property based testi
 of the Python version of Hypothesis for free. As such this library is likely to remain a prototype without some
 financial backing to change that, in the form of paid development and/or ongoing support contracts.
 
-If you are interested in a fully fledged Hypothesis for Java, please `contact  me<mailto:david@drmaciver.com>`_ to
+If you are interested in a fully fledged Hypothesis for Java, please `contact  me <mailto:david@drmaciver.com>`_ to
 discuss terms.
