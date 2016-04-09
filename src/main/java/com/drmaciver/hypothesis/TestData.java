@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class TestData implements Comparable<TestData> {
-	static class Frozen extends ConjectureException {
+	static class Frozen extends HypothesisException {
 		/**
 		 * A mutation method has been called on a frozen TestData.
 		 */
@@ -74,7 +74,7 @@ public class TestData implements Comparable<TestData> {
 		OVERRUN, INVALID, VALID, INTERESTING;
 	}
 
-	static class StopTest extends ConjectureException {
+	static class StopTest extends HypothesisException {
 		/**
 		 * A condition that ends the current test has occurred.
 		 */

@@ -1,13 +1,13 @@
 package com.drmaciver.hypothesis;
 
-public class Conjecture {
-	public static <T> T find(DataGenerator<T> generator, ConjecturePredicate<T> condition) throws NoSuchExample {
-		return Conjecture.find(generator, condition, null);
+public class Hypothesis {
+	public static <T> T find(DataGenerator<T> generator, HypothesisPredicate<T> condition) throws NoSuchExample {
+		return Hypothesis.find(generator, condition, null);
 	}
 
-	public static <T> T find(final DataGenerator<T> generator, final ConjecturePredicate<T> condition,
-			final ConjectureSettings settings) throws NoSuchExample {
-		final byte[] buffer = TestRunner.findInterestingBuffer(new ConjectureTestFunction() {
+	public static <T> T find(final DataGenerator<T> generator, final HypothesisPredicate<T> condition,
+			final HypothesisSettings settings) throws NoSuchExample {
+		final byte[] buffer = TestRunner.findInterestingBuffer(new HypothesisTestFunction() {
 			public void runTest(TestData data) {
 				final T value = generator.doDraw(data);
 				if (condition.test(value)) {

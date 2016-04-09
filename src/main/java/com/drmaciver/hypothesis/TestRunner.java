@@ -19,7 +19,7 @@ class TestRunner {
 
 	}
 
-	static byte[] findInterestingBuffer(ConjectureTestFunction test, ConjectureSettings settings) {
+	static byte[] findInterestingBuffer(HypothesisTestFunction test, HypothesisSettings settings) {
 		final TestRunner runner = new TestRunner(test, settings);
 		runner.run();
 		if (runner.lastData.getStatus() == Status.INTERESTING) {
@@ -31,8 +31,8 @@ class TestRunner {
 	}
 
 	final Random random;
-	ConjectureTestFunction _testFunction;
-	ConjectureSettings settings;
+	HypothesisTestFunction _testFunction;
+	HypothesisSettings settings;
 	int changed = 0;
 	int shrinks = 0;
 
@@ -40,11 +40,11 @@ class TestRunner {
 
 	TestData lastData = null;
 
-	public TestRunner(ConjectureTestFunction _testFunction, ConjectureSettings settings) {
+	public TestRunner(HypothesisTestFunction _testFunction, HypothesisSettings settings) {
 		super();
 		this._testFunction = _testFunction;
 		if (settings == null)
-			settings = new ConjectureSettings();
+			settings = new HypothesisSettings();
 		this.settings = settings;
 		random = new Random();
 	}

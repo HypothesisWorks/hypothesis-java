@@ -1,5 +1,5 @@
 package com.drmaciver.hypothesis;
 
-public interface ConjectureTestFunction {
+public interface HypothesisTestFunction {
 	void runTest(TestData data);
 }

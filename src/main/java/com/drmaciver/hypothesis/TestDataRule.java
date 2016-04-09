@@ -10,7 +10,7 @@ import org.junit.runners.model.Statement;
 import com.drmaciver.hypothesis.TestData.Status;
 
 public class TestDataRule extends Object implements TestRule {
-	private final ConjectureSettings settings;
+	private final HypothesisSettings settings;
 
 	private TestData data = null;
 
@@ -20,10 +20,10 @@ public class TestDataRule extends Object implements TestRule {
 	private int index = 0;
 
 	public TestDataRule() {
-		this(new ConjectureSettings());
+		this(new HypothesisSettings());
 	}
 
-	public TestDataRule(ConjectureSettings settings) {
+	public TestDataRule(HypothesisSettings settings) {
 		super();
 		this.settings = settings;
 	}
@@ -34,14 +34,14 @@ public class TestDataRule extends Object implements TestRule {
 			public void evaluate() throws Throwable {
 				logger = null;
 				index = 0;
-				final TestRunner runner = new TestRunner(new ConjectureTestFunction() {
+				final TestRunner runner = new TestRunner(new HypothesisTestFunction() {
 					public void runTest(TestData d) {
 						data = d;
 						try {
 							base.evaluate();
 						} catch (final AssumptionViolatedException e) {
 							d.markInvalid();
-						} catch (final ConjectureException e) {
+						} catch (final HypothesisException e) {
 							throw e;
 						} catch (final Throwable t) {
 							if (!d.isFrozen()) {

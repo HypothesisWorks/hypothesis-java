@@ -1,6 +1,6 @@
 package com.drmaciver.hypothesis;
 
-public class ConjectureSettings {
+public class HypothesisSettings {
 	private int bufferSize = 8 * 1024;
 
 	private int mutations = 50;

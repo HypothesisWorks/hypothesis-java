@@ -17,7 +17,7 @@ public class TestExampleQuality {
 
 	@Test
 	public void testLexicogaphicBytes() throws NoSuchExample {
-		final byte[] data = Conjecture.find(new BytesGenerator(1000), new ConjecturePredicate<byte[]>() {
+		final byte[] data = Hypothesis.find(new BytesGenerator(1000), new HypothesisPredicate<byte[]>() {
 			public boolean test(byte[] t) {
 				int c = 0;
 				for (final byte b : t) {
@@ -40,10 +40,10 @@ public class TestExampleQuality {
 	@Test
 	public void testSummingIntegers() throws NoSuchExample {
 		final int n = 1000000;
-		final ConjectureSettings settings = new ConjectureSettings();
+		final HypothesisSettings settings = new HypothesisSettings();
 		settings.setDebug(true);
-		final List<Integer> result = Conjecture.find(new ListGenerator<Integer>(new IntegerGenerator()),
-				new ConjecturePredicate<List<Integer>>() {
+		final List<Integer> result = Hypothesis.find(new ListGenerator<Integer>(new IntegerGenerator()),
+				new HypothesisPredicate<List<Integer>>() {
 					public boolean test(List<Integer> t) {
 						return sum(t) >= n;
 					}
