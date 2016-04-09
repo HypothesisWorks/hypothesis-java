@@ -48,7 +48,6 @@ public class TestExampleQuality {
 						return sum(t) >= n;
 					}
 				}, settings);
-		System.out.println(result.toString());
 		assertEquals(n, sum(result));
 	}
 }
