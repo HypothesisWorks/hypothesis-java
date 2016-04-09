@@ -20,8 +20,8 @@ Things that are currently unimplemented:
 1. The example database. The model used is the Hypothesis one where data is represented in an easy to serialize format,
    so implementing this is a Simple Matter Of Code, but it doesn't affect the feasibility so I haven't bothered yet.
 2. The example mutator and shrinker are significantly less sophisticated than the Python one. There's no technical
-reason for this to be case, they're just based on an earlier prototype of the concept that works well enough for a
-tech demo.
+   reason for this to be case, they're just based on an earlier prototype of the concept that works well enough for a
+   tech demo.
 3. Most of the  ta generationlibrary. This is in many ways where the bulk of the work in porting an implementation lies.
 4. Decent example printing. Right now it just uses toString, which is not-ideal. Additionally it's not obvious what
    the best way to hook in to it.
@@ -34,7 +34,7 @@ This is currently under the AGPL. That is not intended as a long term licensing 
 flexibility for future plans. The most likely future licensing path is that there will be a core version available
 under the MPLv2 or Apache, with a proprietary extension library containing most of the strategies and some useful
 extensions. I could be persuaded to make the whole thing open source under Apache/MPLv2 but the persuasion would have
- to be financial.
+to be financial.
 
 Future Plans
 ------------
