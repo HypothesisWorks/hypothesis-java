@@ -1,7 +1,7 @@
 package com.drmaciver.hypothesis;
 
-class ByteUtils {
-	static byte[] deleteInterval(byte[] x, int start, int end) {
+public class ByteUtils {
+    static byte[] deleteInterval(byte[] x, int start, int end) {
 		final byte[] result = new byte[x.length - (end - start)];
 		System.arraycopy(x, 0, result, 0, start);
 		System.arraycopy(x, end, result, start, x.length - end);
@@ -43,4 +43,20 @@ class ByteUtils {
 			result[i] = (byte) 0;
 		return result;
 	}
+
+    public static int intFromBytes(byte[] bytes, int i) {
+        int result = 0;
+        for (int j = 0; j < 4; j++) {
+            result *= 256;
+            result += ByteUtils.unsigned(bytes[i + j]);
+        }
+        return result;
+    }
+
+    public static void intToBytes(byte[] bytes, int index, int value) {
+        for (int j = 3; j >= 0; j--) {
+            bytes[index + j] = (byte) (value & 0xff);
+            value >>>= 8;
+        }
+    }
 }

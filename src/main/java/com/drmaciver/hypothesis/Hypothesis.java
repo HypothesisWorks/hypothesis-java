@@ -1,5 +1,7 @@
 package com.drmaciver.hypothesis;
 
+import com.drmaciver.hypothesis.generators.DataGenerator;
+
 public class Hypothesis {
 	public static <T> T find(DataGenerator<T> generator, HypothesisPredicate<T> condition) throws NoSuchExample {
 		return Hypothesis.find(generator, condition, null);
@@ -10,20 +12,23 @@ public class Hypothesis {
 		final byte[] buffer = TestRunner.findInterestingBuffer(new HypothesisTestFunction() {
 			public void runTest(TestData data) {
 				final T value = generator.doDraw(data);
-				if (condition.test(value)) {
-					// data.incurCost(value.toString().length());
-					data.markInteresting();
+                if (condition.test(value)) {
+                    data.markInteresting();
 				}
 			}
 		}, settings);
 		if (buffer == null) {
 			throw new NoSuchExample();
 		} else {
-			final T result = generator.doDraw(new TestDataForBuffer(buffer));
-			if (!condition.test(result)) {
-				throw new Flaky("Result did not satisfy condition.");
-			}
+            try {
+                final T result = generator.doDraw(new TestDataForBuffer(buffer));
+                if (!condition.test(result)) {
+                throw new Flaky("Result " + result + " did not satisfy condition.");
+                }
 			return result;
-		}
+            } catch (StopTest e) {
+                throw new Flaky("Generator drew a different amount of data on retry");
+            }
+        }
 	}
 }

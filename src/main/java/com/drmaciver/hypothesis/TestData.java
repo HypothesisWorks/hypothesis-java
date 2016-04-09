@@ -1,5 +1,7 @@
 package com.drmaciver.hypothesis;
 
+import com.drmaciver.hypothesis.generators.DataGenerator;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +19,7 @@ public abstract class TestData implements Comparable<TestData> {
     Status status = Status.VALID;
     int checksum = -1;
 
-    public TestData(int maxSize, byte[] buffer) {
+    public TestData(int maxSize) {
         this.record = new byte[maxSize];
     }
 
@@ -71,6 +73,10 @@ public abstract class TestData implements Comparable<TestData> {
     }
 
     public byte[] drawBytes(int n) {
+        return this.drawBytes(n, HypothesisUniformDataDistributions.INSTANCE);
+    }
+
+    public byte[] drawBytes(int n, HypothesisDataDistribution distribution) {
         assertNotFrozen("drawBytes");
         startExample();
         if (index + n > record.length) {
@@ -78,7 +84,7 @@ public abstract class TestData implements Comparable<TestData> {
             freeze();
             throw new StopTest();
         }
-        final byte[] result = doDrawBytes(n);
+        final byte[] result = doDrawBytes(n, distribution);
         System.arraycopy(result, 0, record, index, n);
         index += n;
         stopExample();
@@ -93,7 +99,7 @@ public abstract class TestData implements Comparable<TestData> {
         }
 	}
 
-    protected abstract byte[] doDrawBytes(int n);
+    protected abstract byte[] doDrawBytes(int n, HypothesisDataDistribution distribution);
 
     public void freeze() {
         if (frozen)
@@ -130,6 +136,10 @@ public abstract class TestData implements Comparable<TestData> {
             status = Status.INVALID;
         }
         throw new StopTest();
+    }
+
+    public void assume(boolean condition) {
+        if (!condition) this.markInvalid();
     }
 
     public void startExample() {

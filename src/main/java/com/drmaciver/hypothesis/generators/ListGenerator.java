@@ -1,4 +1,6 @@
-package com.drmaciver.hypothesis;
+package com.drmaciver.hypothesis.generators;
+
+import com.drmaciver.hypothesis.TestData;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,8 @@
 package com.drmaciver.hypothesis;
 
+import com.drmaciver.hypothesis.generators.DataGenerator;
+import com.drmaciver.hypothesis.generators.IntegerGenerator;
+import com.drmaciver.hypothesis.generators.ListGenerator;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,10 +1,14 @@
 package com.drmaciver.hypothesis;
 
+import com.drmaciver.hypothesis.generators.BytesGenerator;
+import com.drmaciver.hypothesis.generators.IntegerGenerator;
+import com.drmaciver.hypothesis.generators.ListGenerator;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestExampleQuality {
 
@@ -50,4 +54,39 @@ public class TestExampleQuality {
 				}, settings);
 		assertEquals(n, sum(result));
 	}
+
+
+    @Test
+    public void testFloatShrinksTowardsZero() throws NoSuchExample {
+        float result = Hypothesis.find(new FloatRangeGenerator(0, 1), new HypothesisPredicate<Float>() {
+            @Override
+            public boolean test(Float value) {
+                return value > 0;
+            }
+        });
+        assertEquals(0.0, result, 0.01);
+    }
+
+
+    @Test
+    public void testNonAssociativeFloats() throws NoSuchExample {
+        final HypothesisSettings settings = new HypothesisSettings();
+        settings.setMaxExamples(10000);
+
+        final List<Float> result = Hypothesis.find(new ListGenerator<Float>(new FloatRangeGenerator(0, 1)),
+                new HypothesisPredicate<List<Float>>() {
+                    public boolean test(List<Float> t) {
+                        if (t.size() < 3) return false;
+                        float x = t.get(0);
+                        float y = t.get(1);
+                        float z = t.get(2);
+                        float u = (x + y) + z;
+                        float v = x + (y + z);
+                        return u != v;
+                    }
+                }, settings);
+        assertEquals(3, result.size());
+        assertTrue(result.get(0) + result.get(1) + result.get(2) < 1);
+
+    }
 }

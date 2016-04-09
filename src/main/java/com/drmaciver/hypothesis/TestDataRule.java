@@ -1,5 +1,6 @@
 package com.drmaciver.hypothesis;
 
+import com.drmaciver.hypothesis.generators.DataGenerator;
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

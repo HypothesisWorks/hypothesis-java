@@ -1,4 +1,6 @@
-package com.drmaciver.hypothesis;
+package com.drmaciver.hypothesis.generators;
+
+import com.drmaciver.hypothesis.TestData;
 
 public class BytesGenerator implements DataGenerator<byte[]> {
 	private final int n;
