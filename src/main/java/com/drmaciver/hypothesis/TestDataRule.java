@@ -1,13 +1,11 @@
 package com.drmaciver.hypothesis;
 
-import java.util.logging.Logger;
-
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-import com.drmaciver.hypothesis.TestData.Status;
+import java.util.logging.Logger;
 
 public class TestDataRule extends Object implements TestRule {
 	private final HypothesisSettings settings;
@@ -57,7 +55,7 @@ public class TestDataRule extends Object implements TestRule {
 							.getLogger(description.getTestClass().getName() + '.' + description.getDisplayName());
 					index = 0;
 					assert lastError != null;
-					data = new TestData(runner.lastData.buffer);
+					data = new TestDataForBuffer(runner.lastData.record);
 					base.evaluate();
 					throw new Flaky("Expected error: " + lastError.toString());
 				}
@@ -68,7 +66,6 @@ public class TestDataRule extends Object implements TestRule {
 	public <T> T draw(DataGenerator<T> generator) {
 		final T result = getData().draw(generator);
 		final String string = result.toString();
-		getData().incurCost(string.length());
 		if (logger != null) {
 			logger.info("Draw #" + (++index) + ": " + string);
 		}

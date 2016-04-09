@@ -19,7 +19,7 @@ public class Hypothesis {
 		if (buffer == null) {
 			throw new NoSuchExample();
 		} else {
-			final T result = generator.doDraw(new TestData(buffer));
+			final T result = generator.doDraw(new TestDataForBuffer(buffer));
 			if (!condition.test(result)) {
 				throw new Flaky("Result did not satisfy condition.");
 			}

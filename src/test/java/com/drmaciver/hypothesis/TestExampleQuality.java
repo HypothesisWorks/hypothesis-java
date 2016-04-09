@@ -1,10 +1,10 @@
 package com.drmaciver.hypothesis;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class TestExampleQuality {
 
@@ -16,7 +16,7 @@ public class TestExampleQuality {
 	}
 
 	@Test
-	public void testLexicogaphicBytes() throws NoSuchExample {
+	public void testLexicographicBytes() throws NoSuchExample {
 		final byte[] data = Hypothesis.find(new BytesGenerator(1000), new HypothesisPredicate<byte[]>() {
 			public boolean test(byte[] t) {
 				int c = 0;
