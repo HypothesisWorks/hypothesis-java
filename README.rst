@@ -64,7 +64,6 @@ Here's an example of testing a sorting function using this:
           assertSorted(ls);
       }
 
-
       // Utility assertion function. Doesn't use any Hypothesis functionality.
       private <T extends Comparable<T>> void assertSorted(List<T> elements){
           if(elements.isEmpty()) return;
