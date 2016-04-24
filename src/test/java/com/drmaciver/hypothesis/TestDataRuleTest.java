@@ -1,8 +1,7 @@
 package com.drmaciver.hypothesis;
 
 import com.drmaciver.hypothesis.generators.DataGenerator;
-import com.drmaciver.hypothesis.generators.IntegerGenerator;
-import com.drmaciver.hypothesis.generators.ListGenerator;
+import com.drmaciver.hypothesis.generators.Generators;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,8 +9,8 @@ import org.junit.Test;
 import java.util.List;
 
 public class TestDataRuleTest {
-  private static final DataGenerator<Integer> INTEGER = new IntegerGenerator();
-	private static final DataGenerator<List<Integer>> INTEGERS = new ListGenerator<Integer>(INTEGER);
+  private static final DataGenerator<Integer> INTEGER = Generators.integers();
+	private static final DataGenerator<List<Integer>> INTEGERS = Generators.lists(INTEGER);
 	
 	@Rule
 	public final TestDataRule data = new TestDataRule();

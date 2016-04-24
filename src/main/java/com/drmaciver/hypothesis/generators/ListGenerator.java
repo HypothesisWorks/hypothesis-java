@@ -9,11 +9,11 @@ public class ListGenerator<T> implements DataGenerator<List<T>> {
 
 	private final DataGenerator<T> elementGenerator;
 
-	public ListGenerator(DataGenerator<T> elementGenerator) {
+	ListGenerator(DataGenerator<T> elementGenerator) {
 		this.elementGenerator = elementGenerator;
 	}
 
-	public List<T> doDraw(TestData data) {
+    public List<T> doDraw(TestData data) {
 		final List<T> result = new ArrayList<T>();
 		while (true) {
 			data.startExample();

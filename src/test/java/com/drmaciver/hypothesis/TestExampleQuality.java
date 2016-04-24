@@ -1,8 +1,7 @@
 package com.drmaciver.hypothesis;
 
 import com.drmaciver.hypothesis.generators.BytesGenerator;
-import com.drmaciver.hypothesis.generators.IntegerGenerator;
-import com.drmaciver.hypothesis.generators.ListGenerator;
+import com.drmaciver.hypothesis.generators.Generators;
 import org.junit.Test;
 
 import java.util.List;
@@ -46,7 +45,7 @@ public class TestExampleQuality {
 		final int n = 1000000;
 		final HypothesisSettings settings = new HypothesisSettings();
 		settings.setDebug(true);
-		final List<Integer> result = Hypothesis.find(new ListGenerator<Integer>(new IntegerGenerator()),
+		final List<Integer> result = Hypothesis.find(Generators.lists(Generators.integers()),
 				new HypothesisPredicate<List<Integer>>() {
 					public boolean test(List<Integer> t) {
 						return sum(t) >= n;
@@ -73,7 +72,7 @@ public class TestExampleQuality {
         final HypothesisSettings settings = new HypothesisSettings();
         settings.setMaxExamples(10000);
 
-        final List<Float> result = Hypothesis.find(new ListGenerator<Float>(new FloatRangeGenerator(0, 1)),
+        final List<Float> result = Hypothesis.find(Generators.lists(new FloatRangeGenerator(0, 1)),
                 new HypothesisPredicate<List<Float>>() {
                     public boolean test(List<Float> t) {
                         if (t.size() < 3) return false;
