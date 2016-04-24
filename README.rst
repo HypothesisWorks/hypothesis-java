@@ -28,6 +28,56 @@ Things that are currently unimplemented:
    the best way to hook printing into JUnit is.
 5. A license that you would want to use it under.
 
+Example usage
+-------------
+
+The Hypothesis Java prototype is build on JUnit's `Rules <https://github.com/junit-team/junit4/wiki/Rules>`_
+functionality.
+
+You use a TestDataRule as a source of data. Within a test you can then call draw on it with a strategy
+argument to get an example drawn from that strategy. You can call draw as many times as you want for
+tests that need multiple values.
+
+Here's an example of testing a sorting function using this:
+
+.. code-block:: java
+
+    import org.junit.Rule;
+    import org.junit.Test;
+
+    import java.util.Comparator;
+    import java.util.Iterator;
+    import java.util.List;
+
+    import static com.drmaciver.hypothesis.generators.Generators.integers;
+    import static com.drmaciver.hypothesis.generators.Generators.lists;
+    import static org.junit.Assert.assertTrue;
+
+    public class TestSortingAList {
+        @Rule
+        public final TestDataRule data = new TestDataRule();
+
+        private <T extends Comparable<T>> void assertSorted(List<T> elements){
+            if(elements.isEmpty()) return;
+            Iterator<T> it = elements.iterator();
+            T previous = it.next();
+            while(it.hasNext()){
+                T current = it.next();
+                assertTrue(previous.compareTo(current) <= 0);
+                previous = current;
+            }
+        }
+
+        @Test
+        public void testIsSortedAfterSorting(){
+            List<Integer> ls = data.draw(lists(integers()));
+            ls.sort(Comparator.naturalOrder());
+            assertSorted(ls);
+        }
+    }
+
+
+
 Licensing
 ---------
 
