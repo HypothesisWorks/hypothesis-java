@@ -15,6 +15,15 @@ public class TestSortingAList {
     @Rule
     public final TestDataRule data = new TestDataRule();
 
+    @Test
+    public void testIsSortedAfterSorting(){
+        List<Integer> ls = data.draw(lists(integers()));
+        ls.sort(Comparator.naturalOrder());
+        assertSorted(ls);
+    }
+
+
+    // Utility assertion function. Doesn't use any Hypothesis functionality.
     private <T extends Comparable<T>> void assertSorted(List<T> elements){
         if(elements.isEmpty()) return;
         Iterator<T> it = elements.iterator();
@@ -26,10 +35,4 @@ public class TestSortingAList {
         }
     }
 
-    @Test
-    public void testIsSortedAfterSorting(){
-        List<Integer> ls = data.draw(lists(integers()));
-        ls.sort(Comparator.naturalOrder());
-        assertSorted(ls);
-    }
 }
