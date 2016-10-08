@@ -2,7 +2,7 @@
 Hypothesis for Java feasibility prototype
 =========================================
 
-`Hypothesis  <http://hypothesis.readthedocs.org/en/latest/>`_ is a modern property based testing system designed for
+`Hypothesis  <https://hypothesis.readthedocs.io/en/latest/>`_ is a modern property based testing system designed for
 mainstream languages. The original version is for Python, where it works extremely well.
 
 This is a very rough prototype of what Hypothesis could look like in Java. It's not even close to being production
