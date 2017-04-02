@@ -97,7 +97,7 @@ public abstract class TestData implements Comparable<TestData> {
         if (hashCode != checksum) {
             throw new RuntimeException("TestData.record has been modified.");
         }
-	}
+    }
 
     protected abstract byte[] doDrawBytes(int n, HypothesisDataDistribution distribution);
 
